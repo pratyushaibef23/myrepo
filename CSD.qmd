@@ -1,0 +1,91 @@
+---
+title: "WHY TAKE PRATYUSHA FOR THE CSD DASHBOARD PROJECT"
+author: "Pratyusha Pathak"
+format: 
+  revealjs: 
+    theme: moon
+editor: visual
+---
+
+# I made this Quarto Presentation
+
+I know actual convincing is needed....
+
+# I am Very Inquisitive
+
+**... and I Pay Attention to your Lectures**
+
+Here is a random *interactive* graph that I made (all by myself)
+
+```{r}
+#| output: false
+library(dplyr)
+library(tidyverse)
+library(scales)
+library(patchwork)
+library(gghighlight)
+library(ISLR2)
+library(openintro)
+library(janitor)
+library(gapminder)
+library(palmerpenguins)
+library(ggiraph)
+library(snakecase)
+```
+
+```{r}
+bmi_star <- starwars %>%
+  drop_na() %>%
+  mutate(weight_on_earth = mass * 9.8 * 0.10197) %>%
+  mutate(height_in_mtrs = height/100) |>
+  mutate(BMI = weight_on_earth / ((height_in_mtrs) * (height_in_mtrs))) %>%
+  mutate(rem = case_when(
+    BMI <= 18.5 ~ "should be sent to Nani ka ghar to gain weight",
+    BMI > 18.5 & BMI <= 25 ~ "is healthy!",
+    BMI > 25 & BMI <= 30 ~ "should be sent to gym",
+    BMI > 30 ~ "? No comments."
+  ))
+
+bmi_star_graph <- bmi_star %>%
+  ggplot(aes(x = weight_on_earth, y = height_in_mtrs, data_id = name, tooltip = paste(name, rem))) +
+  geom_point_interactive(aes(size = BMI, color = sex, data_id = name )) +
+  labs(
+    x = 'Weight on Earth (in kgs)',
+    y = 'Height (in mtrs)',
+    caption = '0% use of ChatGPT',
+    title = 'If they were on Earth, what would be the BMI of the characters of Star Wars be?')
+
+girafe(ggobj = bmi_star_graph, 
+       options = list(opts_hover(css = ''),
+                      opts_hover_inv(css = "opacity:0.1;"),
+                      opts_sizing(rescale = FALSE)),
+       height_svg = 5,
+       width_svg = 10)
+
+```
+
+I try out new things from what I learn
+
+# I am a Fan of Gurudas Sir
+
+Sir took a few lectures of Environmental Economics, enjoyed every bit of it
+
+Working with him would be very amazing
+
+# I am Sincere 
+
+One of my favourite things about me.
+
+*Aisa koyi kaam nahi jo mujhe diya gaya ho aur maine nahi kiya!*
+
+# I can make Dashboards as well!
+
+..... is what I want to tell my cousin whose CV mentions 'dashboard'.
+
+# I am Available for the Project
+
+If I didn't love R or coding or learning new things, I wouldn't have made this presentation.
+
+# Baaki Sab Aapke Haath Mein
+
+![](images/clipboard-1178492162.png)
